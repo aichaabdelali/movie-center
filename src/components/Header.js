@@ -1,8 +1,8 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Movie Center</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

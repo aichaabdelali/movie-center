@@ -1,38 +1,18 @@
-import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Movies from "./components/Movies";
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
-
-  const API_URL =
-    "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cb56581cd73993b93e4cd062650225b9&page=1";
-  /*const IMG_URL = "https://image.tmdb.org/t/p/w1280";
-  const SEARCH_URL =
-  'https://api.themoviedb.org/3/search/movie?api_key=cb56581cd73993b93e4cd062650225b9&query="';*/
-
-  const fetchMovies = async () => {
-    const res = await fetch(API_URL);
-    const data = await res.json();
-    console.log(data.results);
-    return data.results;
-  };
-
-  useEffect(() => {
-    const getMovies = async () => {
-      const moviesdb = await fetchMovies();
-      setMovies(moviesdb);
-    };
-
-    getMovies();
-  }, []);
+  const UpComing_URL =
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US&page=1";
+  const Popular_URL =
+    "https://api.themoviedb.org/3/movie/popular?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US&page=1";
+  const NowPlaying_URL =
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US&page=1";
+  /*https://api.themoviedb.org/3/movie/{id}?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US*/
   return (
     <>
       <Header />
-      <main>
-        <Movies movies={movies} />
-      </main>
+      <main>Movie Center</main>
       <Footer />
     </>
   );

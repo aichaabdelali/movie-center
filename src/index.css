@@ -1,11 +1,6 @@
-* {
-  box-sizing: border-box;
-}
-
-main {
-  margin: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
+footer {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-20px);
 }
