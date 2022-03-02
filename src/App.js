@@ -9,7 +9,7 @@ import MovieScreen from "./MovieScreen";
 const App = () => {
   const [movies, setMovies] = useState([]);
   const Popular_URL =
-    "https://api.themoviedb.org/3/movie/popular?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US&page=1";
+    "https://api.themoviedb.org/3/movie/popular?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US";
 
   const fetchMovies = async (url) => {
     const res = await fetch(url);
@@ -25,7 +25,6 @@ const App = () => {
     };
     getMovies();
   }, []);
-  /*https://api.themoviedb.org/3/movie/{id}?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US*/
   return (
     <Router>
       <Header />
@@ -33,10 +32,7 @@ const App = () => {
         <Container>
           <Routes>
             <Route path="/" element={<Home movies={movies} />} />
-            <Route
-              path="/movies/:id"
-              element={<MovieScreen movies={movies} />}
-            />
+            <Route path="/movies/:id" element={<MovieScreen />} />
           </Routes>
         </Container>
       </main>
