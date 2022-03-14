@@ -2,7 +2,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar variant="dark" expand="lg">
       <Container>
         <Navbar.Brand href="/">Movie Center</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
