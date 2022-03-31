@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Home from "./components/Home";
-import MovieScreen from "./MovieScreen";
+import MovieScreen from "./components/MovieScreen";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -29,14 +27,11 @@ const App = () => {
     <Router>
       <Header />
       <main>
-        <Container>
-          <Routes>
-            <Route path="/" element={<Home movies={movies} />} />
-            <Route path="/movies/:id" element={<MovieScreen />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path="/" element={<Home movies={movies} />} />
+          <Route path="/movies/:id" element={<MovieScreen />} />
+        </Routes>
       </main>
-      <Footer />
     </Router>
   );
 };

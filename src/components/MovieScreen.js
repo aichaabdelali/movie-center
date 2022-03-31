@@ -29,25 +29,26 @@ const MovieScreen = () => {
 
   return (
     <Container>
-      <Card>
+      <Card variant="dark" className="movie-container">
         <Row>
           <Col md={4}>
             <Image src={IMG_URL + movie.poster_path} alt={movie.title} fluid />
           </Col>
           <Col md={7}>
             <Card.Body>
-              <Card.Title>{movie.title}</Card.Title>
-              {movie.genres.map((genre) => (
-                <Badge key={genre.id} pill bg="warning" className="px-2 my-2">
-                  {genre.name}
-                </Badge>
-              ))}
-              <Card.Subtitle>{movie.release_date}</Card.Subtitle>
-              <Card.Text>{movie.original_language}</Card.Text>
-              <Card.Text>{movie.overview}</Card.Text>
+              <Card.Title className="title">{movie.title}</Card.Title>
+              <Card.Subtitle className="release-date">
+                {movie.release_date.substring(0, 4)}
+              </Card.Subtitle>
               <Card.Link href={movie.homepage} target="_blank">
                 {movie.title} : {movie.tagline}
               </Card.Link>
+              <Card.Text className="overview">{movie.overview}</Card.Text>
+              {movie.genres.map((genre) => (
+                <Badge key={genre.id} pill bg="warning" className="genres">
+                  {genre.name}
+                </Badge>
+              ))}
             </Card.Body>
           </Col>
         </Row>

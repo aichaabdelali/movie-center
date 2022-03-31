@@ -8,8 +8,8 @@ const Movie = ({ movie }) => {
       <Image
         src={IMG_URL + movie.poster_path}
         alt={movie.title}
-        className="poster"
         fluid
+        className="poster"
       />
     </Link>
   );

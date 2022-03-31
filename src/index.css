@@ -1,20 +1,60 @@
-main {
-  min-height: 80vh;
-  margin-top: 15px;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Roboto+Serif:wght@300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
 }
 
-footer {
-  text-align: center;
-  margin: 5px auto;
+body {
+  margin: 0;
+  position: relative;
 }
 
-.poster {
-  margin: 12px;
-  padding: 5px;
-  border: 2px solid #dee2e6;
+.navbar {
+  font-family: "Montserrat", sans-serif;
+  height: 12vh;
 }
 
 h3 {
-  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #dedede;
+  margin: 2rem auto;
+  cursor: default;
+}
+
+.poster {
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #f0a500;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  margin: 20px auto 5px auto;
+}
+
+.release-date {
   margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.genres {
+  margin: auto 8px;
+  padding: 10px;
+}
+
+.genres:first-of-type {
+  margin: auto 0px;
+}
+
+.overview {
+  font-family: "Roboto Serif", serif;
+  font-weight: 400;
+  text-align: justify;
+  margin: 20px auto;
 }
