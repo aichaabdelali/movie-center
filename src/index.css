@@ -37,19 +37,29 @@ h3 {
   margin: 20px auto 5px auto;
 }
 
-.release-date {
-  margin-bottom: 10px;
+.release-runtime {
+  margin: 10px auto;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
+.vote {
+  margin: 20px auto;
+  display: flex;
+}
+
+.vote-count {
+  font-size: 11px;
+  display: block;
+}
+
 .genres {
-  margin: auto 8px;
+  margin: auto 5px;
   padding: 10px;
 }
 
 .genres:first-of-type {
-  margin: auto 0px;
+  margin-left: 0px;
 }
 
 .overview {

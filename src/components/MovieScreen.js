@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Image, Container, Row, Col, Card, Badge } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 const MovieScreen = () => {
   const params = useParams();
@@ -23,13 +24,11 @@ const MovieScreen = () => {
       setMovie(moviesdb);
     };
     getMovie();
-  }, [params]);
-
-  console.log(movie);
+  }, [params.id]);
 
   return (
     <Container>
-      <Card variant="dark" className="movie-container">
+      <Card variant="dark">
         <Row>
           <Col md={4}>
             <Image src={IMG_URL + movie.poster_path} alt={movie.title} fluid />
@@ -37,9 +36,26 @@ const MovieScreen = () => {
           <Col md={7}>
             <Card.Body>
               <Card.Title className="title">{movie.title}</Card.Title>
-              <Card.Subtitle className="release-date">
-                {movie.release_date.substring(0, 4)}
+              <Card.Subtitle>
+                Original title : {movie.original_title}
               </Card.Subtitle>
+              <Card.Text className="release-runtime">
+                {movie.release_date.substring(0, 4)} . {movie.runtime}min
+              </Card.Text>
+              <Card.Text className="vote">
+                <FaStar
+                  style={{
+                    color: "#FFCE45",
+                    width: "28px",
+                    height: "28px",
+                    margin: "6px 10px 6px 0px",
+                  }}
+                />{" "}
+                <div>
+                  {movie.vote_average} /10
+                  <span className="vote-count">{movie.vote_count} votes</span>
+                </div>
+              </Card.Text>
               <Card.Link href={movie.homepage} target="_blank">
                 {movie.title} : {movie.tagline}
               </Card.Link>
