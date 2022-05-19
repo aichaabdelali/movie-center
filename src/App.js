@@ -23,13 +23,14 @@ const App = () => {
     };
     getMovies();
   }, []);
+
   return (
     <Router>
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home movies={movies} />} />
-          <Route path="/movies/:id" element={<MovieScreen />} />
+          <Route path="/movie/:id" element={<MovieScreen />} />
         </Routes>
       </main>
     </Router>

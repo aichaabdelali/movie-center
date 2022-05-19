@@ -26,21 +26,27 @@ const MovieScreen = () => {
     getMovie();
   }, [params.id]);
 
+  console.log(movie);
+
   return (
     <Container>
       <Card variant="dark">
-        <Row>
-          <Col md={4}>
-            <Image src={IMG_URL + movie.poster_path} alt={movie.title} fluid />
-          </Col>
-          <Col md={7}>
-            <Card.Body>
+        <Card.Body>
+          <Row>
+            <Col md={4}>
+              <Image
+                src={IMG_URL + movie.poster_path}
+                alt={movie.title}
+                fluid
+              />
+            </Col>
+            <Col md={7}>
               <Card.Title className="title">{movie.title}</Card.Title>
               <Card.Subtitle>
                 Original title : {movie.original_title}
               </Card.Subtitle>
               <Card.Text className="release-runtime">
-                {movie.release_date.substring(0, 4)} . {movie.runtime}min
+                {movie.release_date} . {movie.runtime}min
               </Card.Text>
               <Card.Text className="vote">
                 <FaStar
@@ -60,14 +66,9 @@ const MovieScreen = () => {
                 {movie.title} : {movie.tagline}
               </Card.Link>
               <Card.Text className="overview">{movie.overview}</Card.Text>
-              {movie.genres.map((genre) => (
-                <Badge key={genre.id} pill bg="warning" className="genres">
-                  {genre.name}
-                </Badge>
-              ))}
-            </Card.Body>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Card.Body>
       </Card>
     </Container>
   );
