@@ -9,6 +9,10 @@ body {
   position: relative;
 }
 
+main {
+  height: 90vh;
+}
+
 .navbar {
   font-family: "Montserrat", sans-serif;
   height: 12vh;
@@ -46,6 +50,14 @@ h3 {
 .vote {
   margin: 20px auto;
   display: flex;
+  flex-direction: column;
+}
+
+.vote-star {
+  color: "#FFCE45";
+  width: "28px";
+  height: "28px";
+  margin: "6px 10px 6px 0px";
 }
 
 .vote-count {
@@ -67,4 +79,10 @@ h3 {
   font-weight: 400;
   text-align: justify;
   margin: 20px auto;
+}
+
+.similar-poster {
+  margin: 5px;
+  padding: 2px;
+  border: 0.5px solid #f0a500;
 }
