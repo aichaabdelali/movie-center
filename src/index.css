@@ -10,12 +10,12 @@ body {
 }
 
 main {
-  height: 90vh;
+  min-height: 80vh;
 }
 
 .navbar {
   font-family: "Montserrat", sans-serif;
-  height: 12vh;
+  min-height: 10vh;
 }
 
 h3 {
@@ -85,4 +85,14 @@ h3 {
   margin: 5px;
   padding: 2px;
   border: 0.5px solid #f0a500;
+}
+
+footer {
+  font-family: "Montserrat", sans-serif;
+  min-height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.2);
 }

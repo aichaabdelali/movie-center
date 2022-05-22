@@ -1,15 +1,5 @@
-import { Col, Container, Row } from "react-bootstrap";
-
 const Footer = () => {
-  return (
-    <footer>
-      <Container>
-        <Row>
-          <Col>Copyright &copy; Movie Center</Col>
-        </Row>
-      </Container>
-    </footer>
-  );
+  return <footer>Copyright &copy; Movie Center</footer>;
 };
 
 export default Footer;

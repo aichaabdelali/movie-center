@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Row, Col, Card, Container, Image, ListGroup } from "react-bootstrap";
+import { Row, Col, Card, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
@@ -8,18 +8,11 @@ const MovieScreen = () => {
   const IMG_URL = "https://image.tmdb.org/t/p/w1280";
 
   const [movie, setMovie] = useState({});
-  const [similars, setSimilars] = useState({});
 
   const fetchMovie = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     return data;
-  };
-
-  const fetchSimilar = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data.results.slice(0, 4);
   };
 
   useEffect(() => {
@@ -33,19 +26,6 @@ const MovieScreen = () => {
     getMovie();
   }, [params.id]);
 
-  useEffect(() => {
-    const getSimilar = async () => {
-      const similar_movies = await fetchSimilar(
-        `https://api.themoviedb.org/3/movie/${params.id}/similar?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US`
-      );
-
-      setSimilars(similar_movies);
-    };
-    getSimilar();
-  }, [params.id]);
-
-  console.log(movie, similars);
-
   return (
     <>
       <Container>
@@ -55,7 +35,7 @@ const MovieScreen = () => {
         <Card variant="dark" style={{ width: "60vw", border: "none" }}>
           <Card.Body>
             <Row>
-              <Col md={3}>
+              <Col md={4}>
                 <Card.Img
                   src={IMG_URL + movie.poster_path}
                   alt={movie.title}
@@ -79,17 +59,6 @@ const MovieScreen = () => {
                   {movie.title} : {movie.tagline}
                 </Card.Link>
                 <Card.Text className="overview">{movie.overview}</Card.Text>
-              </Col>
-              <Col md={2}>
-                {similars.map((similar) => (
-                  <Image
-                    className="similar-poster"
-                    key={similar.id}
-                    src={IMG_URL + similar.poster_path}
-                    alt={IMG_URL + similar.title}
-                    fluid
-                  />
-                ))}
               </Col>
             </Row>
           </Card.Body>

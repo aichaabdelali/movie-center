@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./components/Home";
 import MovieScreen from "./components/MovieScreen";
+import MoviesScreen from "./components/MoviesScreen";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -30,9 +32,11 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home movies={movies} />} />
+          <Route path="/movies" element={<MoviesScreen movies={movies} />} />
           <Route path="/movie/:id" element={<MovieScreen />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 };
