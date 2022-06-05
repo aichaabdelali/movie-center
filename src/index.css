@@ -18,7 +18,8 @@ main {
   min-height: 10vh;
 }
 
-h3 {
+h3,
+h5 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 26px;

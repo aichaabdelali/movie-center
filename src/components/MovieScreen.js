@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import SimilarMovie from "./SimilarMovie";
 import { FaStar } from "react-icons/fa";
 
 const MovieScreen = () => {
@@ -26,6 +27,25 @@ const MovieScreen = () => {
     getMovie();
   }, [params.id]);
 
+  const [similars, setSimilars] = useState({});
+
+  const fetchSimilar = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.results.slice(0, 4);
+  };
+
+  useEffect(() => {
+    const getSimilar = async () => {
+      const similar_movies = await fetchSimilar(
+        `https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US`
+      );
+
+      setSimilars(similar_movies);
+    };
+    getSimilar();
+  }, [movie.id]);
+
   return (
     <>
       <Container>
@@ -36,13 +56,9 @@ const MovieScreen = () => {
           <Card.Body>
             <Row>
               <Col md={4}>
-                <Card.Img
-                  src={IMG_URL + movie.poster_path}
-                  alt={movie.title}
-                  fluid
-                />
+                <Card.Img src={IMG_URL + movie.poster_path} alt={movie.title} />
               </Col>
-              <Col md={8}>
+              <Col md={7}>
                 <Card.Title className="title">{movie.title}</Card.Title>
                 <Card.Subtitle>
                   Original title : {movie.original_title}
@@ -63,6 +79,9 @@ const MovieScreen = () => {
             </Row>
           </Card.Body>
         </Card>
+        <Row>
+          <SimilarMovie similars={similars} />
+        </Row>
       </Container>
     </>
   );

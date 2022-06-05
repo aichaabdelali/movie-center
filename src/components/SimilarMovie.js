@@ -1,29 +1,27 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Col, Container, Image, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const SimilarMovie = () => {
-  const params = useParams();
+const SimilarMovie = ({ similars }) => {
   const IMG_URL = "https://image.tmdb.org/t/p/w1280";
-  const [similars, setSimilars] = useState({});
-
-  const fetchSimilar = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data.results.slice(0, 4);
-  };
-
-  useEffect(() => {
-    const getSimilar = async () => {
-      const similar_movies = await fetchSimilar(
-        `https://api.themoviedb.org/3/movie/${params.id}/similar?api_key=cb56581cd73993b93e4cd062650225b9&language=en-US`
-      );
-
-      setSimilars(similar_movies);
-    };
-    getSimilar();
-  }, [params.id]);
-
-  return <>{similars.title}</>;
+  return (
+    <Container>
+      <h5>Similar Movies</h5>
+      <Row>
+        {similars.map((similar) => (
+          <Col>
+            <Link to={`/movie/${similar.id}`}>
+              <Image
+                src={IMG_URL + similar.poster_path}
+                alt={similar.title}
+                fluid
+                className="poster"
+              />
+            </Link>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
 };
 
 export default SimilarMovie;
